@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 
-    string str = "Tact Co";
+    string str = "Tact Coa";
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     map<char, int> freqMap;
 
@@ -14,24 +14,24 @@ int main()
         if (str[i] != ' ')
         {
             freqMap[str[i]]++;
-            if (freqMap[str[i]] % 2 == 0)
+        }
+    }
+
+    bool isPalindromePermutation = true;
+
+    for (auto it = freqMap.begin(); it != freqMap.end(); it++)
+    {
+        if (it->second % 2 != 0)
+        {
+            countOdd++;
+            if (countOdd > 1)
             {
-                countOdd++;
-            }
-            else
-            {
-                countOdd--;
+                isPalindromePermutation = false;
             }
         }
     }
 
-    if (countOdd <= 1)
-    {
-        cout << true << endl;
-    }
-    else
-    {
-        cout << false << endl;
-    }
+    cout << isPalindromePermutation << endl;
+
     return 0;
 }
